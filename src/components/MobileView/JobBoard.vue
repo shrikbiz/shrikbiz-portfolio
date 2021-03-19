@@ -61,8 +61,8 @@ import store from '@/store/store';
 
 @Component({
     components: {
-        JobDetail: () => import('@/components/JobDetail.vue'),
-        SearchArea: () => import('@/components/SearchArea.vue'),
+        JobDetail: () => import('@/components/MobileView/JobDetail.vue'),
+        SearchArea: () => import('@/components/MobileView/SearchArea.vue'),
     },
 })
 export default class JobBoard extends Vue {

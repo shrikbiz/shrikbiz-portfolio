@@ -9,11 +9,6 @@ const routes: Array<RouteConfig> = [
         name: 'HomePage',
         component: () => import('@/views/HomePage.vue'),
     },
-    {
-        path: '/search',
-        name: 'JobSearch',
-        component: () => import('@/views/JobBoard.vue'),
-    },
 ];
 
 const router = new VueRouter({

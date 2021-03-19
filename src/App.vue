@@ -1,13 +1,11 @@
 <template>
     <v-app id="app">
-        <NavBar />
-        <v-responsive class="overflow-y-auto" max-height="calc(100vh - 120px)">
-            <SideBar id="sidebar" />
+        <v-responsive class="overflow-y-auto" max-height="calc(100vh - 56.8px)">
             <v-main>
-                <router-view />
+                <HomePage @handleScrollVariable="onScroll($event)" />
             </v-main>
         </v-responsive>
-        <Footer />
+        <Footer :scrollVariable="scrollVariable" />
     </v-app>
 </template>
 
@@ -19,13 +17,13 @@ import { getModule } from 'vuex-module-decorators';
 
 @Component({
     components: {
-        NavBar: () => import('@/components/NavBar.vue'),
+        HomePage: () => import('@/views/HomePage.vue'),
         Footer: () => import('@/components/Footer.vue'),
-        SideBar: () => import('@/components/MobileView/SideBar.vue'),
     },
 })
 export default class App extends Vue {
     storeModule: any;
+    scrollVariable: number = 0;
 
     // @Module
     beforeCreate() {
@@ -35,6 +33,10 @@ export default class App extends Vue {
 
     created() {
         if (!this.storeModule) this.storeModule = getModule(store, this.$store);
+    }
+
+    onScroll(value: any) {
+        this.scrollVariable = value;
     }
 }
 </script>

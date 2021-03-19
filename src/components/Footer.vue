@@ -4,7 +4,10 @@
             <v-col class="py-4 text-right white--text headerPrimary" cols="auto">
                 Author:
                 <a href="mailto: shrikantpatel.js@gmail.com" style="text-decoration: none">
-                    <strong>Shrikant Patel</strong>
+                    <strong>Shrikant Patel</strong> |
+                    <span class="accent">
+                        {{ scrollVariable }}
+                    </span>
                 </a>
             </v-col>
             <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
@@ -52,8 +55,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Prop } from 'vue-property-decorator';
 
 @Component
-export default class Footer extends Vue {}
+export default class Footer extends Vue {
+    @Prop() scrollVariable: any;
+}
 </script>

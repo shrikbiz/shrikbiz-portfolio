@@ -125,7 +125,7 @@ import { getModule } from 'vuex-module-decorators';
 
 @Component({
     components: {
-        JobModal: () => import('@/components/JobModal.vue'),
+        JobModal: () => import('@/components/MobileView/JobModal.vue'),
     },
 })
 export default class JobDetail extends Vue {

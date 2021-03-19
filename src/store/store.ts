@@ -1,5 +1,4 @@
 import { Action, Module, Mutation, MutationAction, VuexModule } from 'vuex-module-decorators';
-import { DarkTheme, LightTheme, ThemeList } from '@/constants/theme';
 import api from '@/api';
 import store from '.';
 
