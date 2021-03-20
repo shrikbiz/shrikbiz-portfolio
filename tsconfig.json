@@ -15,7 +15,7 @@
         "noImplicitAny": false,
         "baseUrl": ".",
         "skipLibCheck": true,
-        "types": ["webpack-env", "vuetify", "vue-kinesis"],
+        "types": ["webpack-env", "vuetify"],
         "paths": {
             "@/*": ["src/*"]
         },

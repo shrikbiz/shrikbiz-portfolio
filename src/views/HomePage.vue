@@ -4,66 +4,48 @@
         style="max-height: calc(100vh - 56.8px); width: 100%; height: auto; overflow-x: hidden"
         class="overflow-y-auto"
     >
-        <div>
-            <v-row v-scroll:#scroll-target="onScroll" justify="center" class="masterhead">
-                <v-col cols="auto">
-                    <div style="width: 100%; height: 500px; overflow-y: hidden; overflow-x: hidden">
-                        <v-img
-                            :height="imgHeight"
-                            style="margin: 10rem 0; overflow-x: hidden"
-                            src="@/assets/darkthemeWP.jpeg"
-                        >
-                            <div width="100%" style="color:white" align="center">
-                                <h1
-                                    :style="{
-                                        marginTop: '50px',
-                                        fontFamily: 'Helvetica',
-                                        width: '100%',
-                                        overflowX: 'hidden',
-                                    }"
-                                >
-                                    <span
-                                        v-for="(letter, index) in 'ShrikantPatel'"
-                                        :key="index"
-                                        :style="{
-                                            fontSize: titleSize + 'px',
-                                            marginLeft: titleSpacing + 'px',
-                                        }"
-                                    >
-                                        {{ letter }}
-                                    </span>
-                                </h1>
-                                <h4
-                                    align="center"
-                                    :style="{
-                                        width: '100%',
-                                        overflowX: 'hidden',
-                                        fontSize: subTitleSize + 'px',
-                                    }"
-                                >
-                                    FrontEnd Software Engineer
-                                </h4>
-                            </div>
-                        </v-img>
-                    </div>
-                    <v-container>
-                        <p style="font-size: 2rem; text-align: center; margin-bottom: 2rem">
-                            Software Developer | Web Designer | Algorithm Enthusiastic | rookie Content Creator |
-                            ex-Footballer (Soccer) | Painter | Cook | Star Wars | Marvels | Game of Thrones | Gym
-                            Enthusiastic
-                        </p>
-                        <p style="text-align: center">
-                            Hi, I am Shrikant Patel from Denver, Colorado with ~3 years of experience as FrontEnd
-                            Software Engineer. Event though first framework that I learned was Angular, I generally work
-                            on Vue and React. When I am not programming, I like to go for hiking, cooking, or watch few
-                            Real Madrid or Juventus games. I have currently started to create content on FrontEnd
-                            Development related topics for Instagram, and soon for YouTube.
-                        </p>
-                    </v-container>
-                </v-col>
-            </v-row>
-        </div>
+        <FirstLook />
         <v-row v-scroll:#scroll-target="onScroll" justify="center" class="secondHead primary">
+            <v-col cols="auto">
+                <div align="center">
+                    <v-lazy
+                        v-model="isActive"
+                        :options="{
+                            threshold: 0.1,
+                        }"
+                        min-height="200"
+                        transition="fade-transition"
+                    >
+                        <h1
+                            class="section"
+                            :style="{
+                                width: '100%',
+                                fontFamily: 'Montserrat, sans-serif',
+                                overflowX: 'hidden',
+                                opacity: changeOpacity,
+                                backgroundImage: 'linear-gradient(#999, #000)',
+                                webkitBackgroundClip: 'text',
+                                color: 'transparent',
+                            }"
+                        >
+                            Work
+                        </h1>
+                    </v-lazy>
+                    <h4
+                        align="center"
+                        :style="{
+                            width: '100%',
+                            overflowX: 'none',
+                        }"
+                    >
+                        FrontEnd Software Engineer
+                    </h4>
+                </div>
+            </v-col>
+        </v-row>
+
+        <!-- the slide in and roller one -->
+        <!-- <v-row v-scroll:#scroll-target="onScroll" justify="center" class="secondHead primary">
             <v-col cols="auto">
                 <div align="center" style="margin-top: 10rem">
                     <v-lazy
@@ -95,7 +77,7 @@
                         align="center"
                         :style="{
                             width: '100%',
-                            marginLeft: subTitleSpeed + 'px',
+                            marginLeft: titleSpeed + 'px',
                             overflowX: 'none',
                         }"
                     >
@@ -103,7 +85,7 @@
                     </h4>
                 </div>
             </v-col>
-        </v-row>
+        </v-row> -->
     </div>
 </template>
 
@@ -117,6 +99,7 @@ import { Characters } from '@/constants/char';
 @Component({
     components: {
         Roller: () => import('vue-roller'),
+        FirstLook: () => import('@/components/FirstLook.vue'),
     },
 })
 export default class HomePage extends Vue {
@@ -133,11 +116,12 @@ export default class HomePage extends Vue {
     }
 
     get titleSpeed(): number {
-        let constant: number = 860;
-        return this.scrollVariable > constant ? Math.pow(this.scrollVariable - constant, 1.35) : 0;
+        let constant: number = 862;
+        let number = constant - this.scrollVariable;
+        return number > 0 ? number : 0;
     }
     get subTitleSpeed(): number {
-        let constant: number = 860;
+        let constant: number = 862;
         return this.scrollVariable > constant ? Math.pow(this.scrollVariable - constant, 1.2) : 0;
     }
 
@@ -149,38 +133,25 @@ export default class HomePage extends Vue {
         return charList;
     }
 
-    get imgHeight() {
-        let number: number = this.scrollVariable;
-        let constant = 400;
-        constant += number;
-        return constant ? constant : 0;
-    }
-
-    get titleSize(): number {
-        let number: number = this.scrollVariable / 45;
-        number += 100;
-        return number;
-    }
-    get subTitleSize(): number {
-        let number: number = this.scrollVariable / 50;
-        let constant = 50;
-        constant -= number;
-        return constant;
-    }
-
-    get titleSpacing(): number {
-        let number: number = this.scrollVariable / 10;
-        return number;
+    get changeOpacity(): number {
+        let number = this.scrollVariable - 200;
+        let percentage = number > 0 ? (number < 601 ? number / 600 : 1) : 0;
+        return percentage;
     }
 
     onScroll(event: any) {
         this.scrollVariable = event.target.scrollTop;
         this.handleScroll(this.scrollVariable);
+        let el: any = document.querySelector('.section');
+        el.style.color = '-webkit-linear-gradient(blue, #333)';
     }
 }
 </script>
 
 <style scoped lang="scss">
+* {
+    font-family: Montserrat, sans-serif;
+}
 .masterhead {
     height: 100vh;
     // background-image: linear-gradient(
@@ -192,15 +163,20 @@ export default class HomePage extends Vue {
 }
 
 .secondHead {
-    height: 100rem;
+    height: 100vh;
 }
 
 h1 {
     font-size: 4em;
     font-weight: normal;
+    // background: -webkit-linear-gradient(#eee, #333);
+    // background-clip: text;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
 }
 h4 {
     font-weight: normal;
+    font-family: Montserrat, sans-serif;
 }
 
 h2 {
