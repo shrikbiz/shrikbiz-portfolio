@@ -18,6 +18,7 @@ export default new Vuetify({
                 info: '#2196F3',
                 success: '#4CAF50',
                 warning: '#FFC107',
+                opposite: '#000',
                 textBackGround: '#F5F6F8',
             },
             dark: {
@@ -28,6 +29,7 @@ export default new Vuetify({
                 info: '#2196F3',
                 success: '#4CAF50',
                 warning: '#FFC107',
+                opposite: '#fff',
                 textBackGround: '#575f69',
             },
         },

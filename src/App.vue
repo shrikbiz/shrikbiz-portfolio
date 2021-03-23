@@ -3,6 +3,7 @@
         <v-responsive class="overflow-y-auto" max-height="calc(100vh - 56.8px)">
             <v-main>
                 <HomePage @handleScrollVariable="onScroll($event)" />
+                <!-- <SandBox /> -->
             </v-main>
         </v-responsive>
         <Footer :scrollVariable="scrollVariable" />
@@ -18,6 +19,7 @@ import { getModule } from 'vuex-module-decorators';
 @Component({
     components: {
         HomePage: () => import('@/views/HomePage.vue'),
+        SandBox: () => import('@/views/SandBox.vue'),
         Footer: () => import('@/components/Footer.vue'),
     },
 })
