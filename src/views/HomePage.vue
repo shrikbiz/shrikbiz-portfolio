@@ -7,137 +7,88 @@
         <FirstLook />
 
         <!-- Title -->
-        <div class="work-info">
+        <div class="work-info" :style="{ background: radialEffect(0, 900) }">
+            <!-- <InfiniteScrollBar :barStyle="{ background: '#42b883', padding: '5px 0' }">
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+                <img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png" />
+            </InfiniteScrollBar> -->
             <div class="work-container">
                 <v-row v-scroll:#scroll-target="onScroll" justify="center" style=" width: 100%; margin-bottom: 5rem">
                     <v-col cols="auto" style="width: 100%">
-                        <div align="center">
-                            <h1
-                                :style="{
-                                    transition: 'all ease 1s',
-                                    width: '100%',
-                                    fontFamily: 'Montserrat, sans-serif',
-                                    overflowX: 'hidden',
-                                    opacity: changeOpacity,
-                                    backgroundImage: `linear-gradient(#${colorPicker}, #000)`,
-                                    webkitBackgroundClip: 'text',
-                                    color: 'transparent',
-                                }"
-                            >
-                                Work
-                            </h1>
-                        </div>
+                        <TitleEffect
+                            :scrollVariable="scrollVariable"
+                            :title="'Work'"
+                            :effectEnd="600"
+                            :difference="500"
+                            :primaryColorHex="[221, 69, 255]"
+                        />
                     </v-col>
                 </v-row>
-                <!-- Companies & JobTitle -->
-                <v-row v-scroll:#scroll-target="onScroll" justify="center" style=" width: 100%; margin-bottom: 50vh">
-                    <v-col cols="auto" align="center" style="width: 50%">
-                        <v-card
-                            width="500"
-                            class="work-card"
-                            :style="{ left: cardOneSlideIn + '%', right: 'auto', overflowX: 'hidden' }"
+                <v-row justify="center" style=" width: 100%; margin-bottom: 50vh">
+                    <v-col cols="auto" align="right" style="width: 50%">
+                        <Card
+                            :isDirectionLeft="true"
+                            :effectEnd="900"
+                            :difference="350"
+                            :scrollVariable="scrollVariable"
+                            :jobDetails="{
+                                jobTitle: 'FrontEnd Software Engineer',
+                                companyName: 'Lumen Technologies',
+                                description: tempDescription,
+                            }"
                         >
-                            <v-card-title class="mt-8">
-                                <strong class="ml-8">
-                                    FrontEnd Software Engineer
-                                </strong>
-                                <v-img
-                                    max-width="100px"
-                                    src="@/assets/LumenLogo.png"
-                                    :style="{
-                                        position: 'absolute',
-                                        left: 'auto',
-                                        right: '10px',
-                                        top: '50px',
-                                    }"
-                                >
-                                </v-img>
-                            </v-card-title>
-
-                            <v-card-text>
-                                <div class="font-weight-bold ml-8 mb-2" align="left">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione consequuntur
-                                    perspiciatis at repudiandae architecto rerum similique rem velit minima. Voluptates
-                                    ipsam id, laudantium molestias numquam doloribus accusamus ad quos odit!
-                                </div>
-                            </v-card-text>
-                        </v-card>
+                            <template v-slot:logo>
+                                <v-img contain src="@/assets/LumenLogo.png" class="company-logo"> </v-img>
+                            </template>
+                        </Card>
                     </v-col>
-                    <v-col cols="auto" style="width: 50%">
-                        <div style="position: relative; top: 12rem" align="center">
-                            <v-card
-                                class="work-card"
-                                width="500"
-                                :style="{ left: cardTwoSlideIn + '%', right: 'auto', overflowX: 'hidden' }"
-                            >
-                                <v-card-title class="mt-8">
-                                    <strong class="ml-8">
-                                        Software Specialist
-                                    </strong>
-
-                                    <v-img
-                                        max-width="110px"
-                                        src="@/assets/eCW.png"
-                                        contain
-                                        :style="{
-                                            position: 'absolute',
-                                            left: 'auto',
-                                            right: '10px',
-                                            top: '50px',
-                                            background: 'white',
-                                        }"
-                                    >
-                                    </v-img>
-                                </v-card-title>
-
-                                <v-card-text>
-                                    <div class="font-weight-bold ml-8 mb-2" align="left">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione consequuntur
-                                        perspiciatis at repudiandae architecto rerum similique rem velit minima.
-                                        Voluptates ipsam id, laudantium molestias numquam doloribus accusamus ad quos
-                                        odit!
-                                    </div>
-                                </v-card-text>
-                            </v-card>
-                        </div>
+                    <v-col cols="auto" style="width: 50%"> </v-col>
+                    <v-col cols="auto" style="width: 50%"> </v-col>
+                    <v-col align="left" cols="auto" style="width: 50%">
+                        <Card
+                            :isDirectionLeft="false"
+                            :effectEnd="1200"
+                            :difference="350"
+                            :scrollVariable="scrollVariable"
+                            :jobDetails="{
+                                jobTitle: 'Software Specialist',
+                                companyName: 'eClinicalWorks',
+                                description: tempDescription,
+                            }"
+                        >
+                            <template v-slot:logo>
+                                <v-img contain src="@/assets/eCW.png" class="company-logo"> </v-img>
+                            </template>
+                        </Card>
                     </v-col>
-                    <v-col cols="auto" style="width: 50%">
-                        <div style="position: relative; top: 12rem" align="center">
-                            <v-card
-                                class="work-card"
-                                width="500"
-                                :style="{ left: cardThreeSlideIn + '%', right: 'auto', overflowX: 'hidden' }"
-                            >
-                                <v-card-title class="mt-8">
-                                    <strong class="ml-8">
-                                        Software Developer (Intern)
-                                    </strong>
-
-                                    <v-img
-                                        max-width="110px"
-                                        src="@/assets/mazcon.png"
-                                        contain
-                                        :style="{
-                                            position: 'absolute',
-                                            left: 'auto',
-                                            right: '10px',
-                                            top: '50px',
-                                            background: 'white',
-                                        }"
-                                    >
-                                    </v-img>
-                                </v-card-title>
-
-                                <v-card-text>
-                                    <div class="font-weight-bold ml-8 mb-2" align="left">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione consequuntur
-                                        perspiciatis at repudiandae architecto rerum similique rem velit minima.
-                                        Voluptates ipsam id, laudantium molestias numquam doloribus accusamus ad quos
-                                        odit!
-                                    </div>
-                                </v-card-text>
-                            </v-card>
-                        </div>
+                    <v-col cols="auto" align="right" style="width: 50%">
+                        <Card
+                            :isDirectionLeft="true"
+                            :effectEnd="1500"
+                            :difference="350"
+                            :scrollVariable="scrollVariable"
+                            :jobDetails="{
+                                jobTitle: 'Software Developer (Intern)',
+                                companyName: 'Mazcon InfoTech',
+                                description: tempDescription,
+                            }"
+                        >
+                            <template v-slot:logo>
+                                <v-img contain src="@/assets/mazcon.png" class="company-logo"> </v-img>
+                            </template>
+                        </Card>
                     </v-col>
                     <v-col cols="auto" style="width: 50%"></v-col>
                 </v-row>
@@ -238,40 +189,38 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Component, Emit, Watch, Prop } from 'vue-property-decorator';
-import { getModule } from 'vuex-module-decorators';
-import store from '@/store/store';
+import { Component, Emit, Prop } from 'vue-property-decorator';
 import { Characters } from '@/constants/char';
+import { Fraction } from '@/helper/helperIndex';
 
 @Component({
     components: {
         Roller: () => import('vue-roller'),
         FirstLook: () => import('@/components/FirstLook.vue'),
+        TitleEffect: () => import('@/components/utils/TitleEffect.vue'),
+        Card: () => import('@/components/utils/Card.vue'),
+        InfiniteScrollBar: () => import('@/helper/InfiniteScroll.vue'),
     },
 })
 export default class HomePage extends Vue {
     @Prop() handleScrollVariable: any;
-    storeModule: any;
     isActive: boolean = false;
     scrollVariable: number = 0;
+    tempDescription: string = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione consequuntur
+                                perspiciatis at repudiandae architecto rerum similique rem velit minima.
+                                Voluptates ipsam id, laudantium molestias numquam doloribus accusamus ad quos
+                                odit!`;
 
     @Emit('handleScrollVariable')
     handleScroll(variable: any) {}
 
-    async created() {
-        if (!this.storeModule) this.storeModule = getModule(store, this.$store);
-    }
-
+    //for title sliding in
     get titleSpeed(): number {
         let constant: number = 862;
         let number = constant - this.scrollVariable;
         return number > 0 ? number : 0;
     }
-    get subTitleSpeed(): number {
-        let constant: number = 862;
-        return this.scrollVariable > constant ? Math.pow(this.scrollVariable - constant, 1.2) : 0;
-    }
-
+    // for roller
     get charList(): string[] {
         let capsCharList = Characters.map(char => (char = char?.toUpperCase()));
         let specialChar = ['.', '-'];
@@ -279,83 +228,15 @@ export default class HomePage extends Vue {
         charList.push(...Characters, ...capsCharList, ...specialChar, ' ');
         return charList;
     }
-
-    get changeOpacity(): number {
-        let upperBound = 200;
-        let lowerBound = 700;
-        let fraction =
-            this.scrollVariable > upperBound
-                ? this.scrollVariable < lowerBound
-                    ? (this.scrollVariable - upperBound) / (lowerBound - upperBound)
-                    : 1
-                : 0;
-        return fraction;
-    }
-    get cardOneSlideIn(): number {
-        let lowerBound = 700;
-        let upperBound = lowerBound - 350;
-        let fraction =
-            this.scrollVariable > upperBound
-                ? this.scrollVariable < lowerBound
-                    ? (this.scrollVariable - upperBound) / (lowerBound - upperBound)
-                    : 1
-                : 0;
-        return fraction * 100 - 80;
-    }
-    get cardTwoSlideIn(): number {
-        let lowerBound = 860;
-        let upperBound = lowerBound - 350;
-        let fraction =
-            this.scrollVariable > upperBound
-                ? this.scrollVariable < lowerBound
-                    ? (this.scrollVariable - upperBound) / (lowerBound - upperBound)
-                    : 1
-                : 0;
-        return 80 - fraction * 100;
-    }
-    get cardThreeSlideIn(): number {
-        let lowerBound = 1130;
-        let upperBound = lowerBound - 350;
-        let fraction =
-            this.scrollVariable > upperBound
-                ? this.scrollVariable < lowerBound
-                    ? (this.scrollVariable - upperBound) / (lowerBound - upperBound)
-                    : 1
-                : 0;
-        return fraction * 100 - 80;
-    }
-    get colorPicker() {
-        let upperBound = 200;
-        let lowerBound = 700;
-        let fractionNumber =
-            this.scrollVariable < lowerBound
-                ? this.scrollVariable > upperBound
-                    ? (this.scrollVariable - upperBound) / lowerBound
-                    : 0
-                : 1;
-        let number = Math.floor(fractionNumber * 256);
-        number = number < 255 ? number : 255;
-        let oneth = this.numberToHex(Math.floor(number / 16))?.toString();
-        let zeroth = this.numberToHex(number % 16)?.toString();
-        let hexValue = oneth?.concat(zeroth) + oneth?.concat(zeroth) + oneth?.concat(zeroth);
-        return hexValue;
-    }
-
-    numberToHex(num: number) {
-        let hex: any = new Map([
-            [10, 'a'],
-            [11, 'b'],
-            [12, 'c'],
-            [13, 'd'],
-            [14, 'e'],
-            [15, 'f'],
-        ]);
-        return hex.has(num) ? hex.get(num) : num;
-    }
-
     onScroll(event: any) {
         this.scrollVariable = event.target.scrollTop;
         this.handleScroll(this.scrollVariable);
+    }
+
+    radialEffect(start: number, end: number) {
+        let fraction = Fraction(start, end, this.scrollVariable);
+        return `radial-gradient(circle at ${200 -
+            fraction * 100}%, rgba(255, 71, 255, 0.527) 5%, #eee 35%, #121212 35%)`;
     }
 }
 </script>
@@ -364,18 +245,16 @@ export default class HomePage extends Vue {
 * {
     font-family: Montserrat, sans-serif;
 }
-.masterhead {
-    height: 100vh;
-    // background-image: linear-gradient(
-    //     135deg,
-    //     rgb(38, 50, 56) 0%,
-    //     rgb(88, 101, 224) 69%,
-    //     rgb(57, 73, 171) 89%
-    // ) !important;
+
+.company-logo {
+    max-width: 100px;
+    position: absolute;
+    right: 10px;
+    left: auto;
 }
 
 h1 {
-    font-size: 4em;
+    font-size: 5em;
     font-weight: normal;
 }
 h4 {
@@ -391,15 +270,15 @@ h2 {
     position: relative;
     height: 150vh;
     background: #121212;
-    background: radial-gradient(circle at 100%, rgba(255, 71, 255, 0.527) 5%, #eee 35%, #121212 35%);
+    // background: radial-gradient(circle at 100%, rgba(255, 71, 255, 0.527) 5%, #eee 35%, #121212 35%);
 }
 .work-container {
     position: relative;
-    top: 10rem;
+    top: 0rem;
 }
 
 .work-card:hover {
-    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 1) !important;
-    background: rgba(22, 22, 22, 0.651);
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.692) !important;
+    background: rgba(22, 22, 22, 0.884);
 }
 </style>

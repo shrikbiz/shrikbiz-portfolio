@@ -1,57 +1,44 @@
 <template>
     <v-row v-scroll:#scroll-target="onScroll" justify="center" class="masterhead">
         <v-col cols="auto">
-            <div style="width: 100%; height: 500px; overflow-y: hidden; overflow-x: hidden">
-                <!-- <v-img :height="imgHeight" style="margin: 10rem 0; overflow-x: hidden" src="@/assets/mountainWP.jpeg"> -->
-                <!-- </v-img> -->
-
-                <div width="100%" style="margin: 10rem 0" align="center">
+            <div style="width: 100%; height: 300px; overflow-y: hidden; overflow-x: hidden">
+                <div width="100%" align="center" style="margin-top: 5rem">
+                    <!-- <v-img :height="imgHeight" style="margin-bottom: 5rem; overflow-x: hidden" src="@/assets/code.jpeg"> -->
                     <h1
                         :style="{
                             marginTop: '50px',
                             fontFamily: 'Montserrat, sans-serif',
                             width: '100%',
                             overflowX: 'hidden',
+                            fontSize: titleSize + 'px',
+                            transition: 'all 0.1s ease-out',
                         }"
                         class="animTitle"
                     >
-                        <span
-                            v-for="(letter, index) in titleName"
-                            :key="index"
-                            :style="{
-                                fontSize: '6rem',
-                                transition: `font-size margin-left 0s`,
-                            }"
-                        >
-                            <!-- marginLeft: titleSpacing + 'px', -->
+                        <span class="title-letter color-transition" v-for="(letter, index) in titleName" :key="index">
                             {{ letter }}
                         </span>
                     </h1>
-                    <h4
-                        align="center"
-                        :style="{
-                            width: '100%',
-                            overflowX: 'hidden',
-                            fontSize: titleSize + 'px',
-                        }"
-                    >
-                        FrontEnd Software Engineer
-                    </h4>
+                    <!-- </v-img> -->
                 </div>
             </div>
-            <v-container>
-                <p style="font-size: 2rem; text-align: center; margin-bottom: 2rem">
-                    Software Developer | Web Designer | Algorithm Enthusiastic | rookie Content Creator | Former Soccer
-                    Player | Painter | Cook | Star Wars | Marvels | Game of Thrones | Gym Enthusiastic
-                </p>
-                <p style="text-align: center">
-                    Hi, I am Shrikant Patel from Denver, Colorado with ~3 years of experience as FrontEnd Software
-                    Engineer. Event though first framework that I learned was Angular, I generally work on Vue and
-                    React. When I am not programming, I like to go for hiking, cooking, or watch few Real Madrid or
-                    Juventus games. I have currently started to create content on FrontEnd Development related topics
-                    for Instagram, and soon for YouTube.
-                </p>
-            </v-container>
+            <v-row style="max-width: 100%" class="sub-title-container" align="center" justify="center">
+                <v-col cols="auto" style="display: flex" v-for="(iAm, index) in iAmList" :key="index">
+                    <span class="sub-titles">
+                        <p class="each-sub-titles">
+                            {{ iAm }}
+                        </p>
+                    </span>
+                    <span class="sub-titles-divider">|</span>
+                </v-col>
+            </v-row>
+            <p style="text-align: center; font-size: 30px; margin: auto 5%" justify="center">
+                Hi, I am Shrikant Patel from Denver, Colorado with ~3 years of experience as FrontEnd Software Engineer.
+                Event though first framework that I learned was Angular, I generally work on Vue and React. When I am
+                not programming, I like to go for hiking, cooking, or watch few Real Madrid or Juventus games. I have
+                currently started to create content on FrontEnd Development related topics for Instagram, and soon for
+                YouTube.
+            </p>
         </v-col>
     </v-row>
 </template>
@@ -60,6 +47,7 @@
 import vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import RGB from '@/helper/color';
+import { Fraction } from '@/helper/helperIndex';
 
 @Component
 export default class FirstLook extends vue {
@@ -70,8 +58,28 @@ export default class FirstLook extends vue {
     timer: any;
     titleColorArray: any[] = [];
     animTime: number = 0;
-    colorList: string[] = ['dd45ff', '41faf4', 'cffa41', 'cb6bff'];
+    //ff8269 -> red
+    //cb6bff -> violet
+    //cffa41 -> yellowish green
+    //ffb36b -> orange
+    //41faf4 -> blue
+    //dd45ff -> pinkish - violet (red, blue)
+    colorList: string[] = ['cb6bff', 'cffa41', 'ffb36b', '41faf4', 'dd45ff', 'ff8269'];
     colorIndex: number = 0;
+
+    iAmList: string[] = [
+        'Web Designer',
+        'Software Developer',
+        'Algorithm Enthusiastic',
+        'rookie Content Creator',
+        'Former Soccer Player',
+        'Painter',
+        'Cook',
+        'Star Wars',
+        'Marvels',
+        'Game of Thrones',
+        'Gym Enthusiastic',
+    ];
 
     get imgHeight() {
         let number: number = this.scrollVariable;
@@ -80,25 +88,7 @@ export default class FirstLook extends vue {
         return constant ? constant : 0;
     }
     get titleSize(): number {
-        return this.scrollVariable < 800 ? this.scrollVariable / 45 + 50 : 60;
-    }
-    get titleSpacing(): number {
-        let number: number = this.scrollVariable / 40;
-        return number;
-    }
-    get titleSpeed(): number {
-        let constant: number = 860;
-        return this.scrollVariable > constant ? Math.pow(this.scrollVariable - constant, 1.35) : 0;
-    }
-    get subTitleSpeed(): number {
-        let constant: number = 860;
-        return this.scrollVariable > constant ? Math.pow(this.scrollVariable - constant, 1.2) : 0;
-    }
-    get subTitleSize(): number {
-        let number: number = this.scrollVariable / 50;
-        let constant = 50;
-        constant -= number;
-        return constant;
+        return this.scrollVariable < 800 ? this.scrollVariable / 15 + 100 : 60;
     }
 
     created() {
@@ -127,7 +117,7 @@ export default class FirstLook extends vue {
 
     onTick() {
         let text = document.querySelector('.animTitle');
-        let span: any = text?.querySelectorAll('span')[this.char];
+        let span: any = text?.querySelectorAll('.title-letter')[this.char];
         span?.classList.add('fade');
         this.char++;
         if (this.char == this.titleName.length) {
@@ -141,7 +131,7 @@ export default class FirstLook extends vue {
 
     slowColorChange() {
         let text: any = document.querySelector('.animTitle');
-        let span: any = text.querySelectorAll('span')[this.char];
+        let span: any = text.querySelectorAll('.title-letter')[this.char];
         if (this.colorIndex % 2 === 0) {
             span.style.color = `#${this.colorList[this.colorIndex / 2]}`;
         } else {
@@ -188,12 +178,18 @@ export default class FirstLook extends vue {
     mounted(): void {
         this.timer = setInterval(this.onTick, 100);
         this.onTick();
+        let text = document.querySelector('.sub-title-container');
+        for (let iAm in this.iAmList) {
+            let span: any = text?.querySelectorAll('.sub-titles')[iAm];
+            let colorIndx = Number(iAm) % this.colorList.length;
+            span.style.setProperty('--lineColor', `#${this.colorList[colorIndx]}`);
+        }
     }
 }
 </script>
 <style lang="scss" scoped>
 .masterhead {
-    height: 100vh;
+    height: 120vh;
     // background-image: linear-gradient(
     //     135deg,
     //     rgb(38, 50, 56) 0%,
@@ -201,25 +197,73 @@ export default class FirstLook extends vue {
     //     rgb(57, 73, 171) 89%
     // ) !important;
 }
-span {
-    opacity: 0;
-    transition: all ease 1s;
+
+.each-sub-titles {
+    position: relative;
+    display: inline-block;
+    font-size: 50px;
+    background: linear-gradient(to bottom, #fff, #fff 60%, #000 50%, #000 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent !important;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-out;
+    white-space: nowrap;
 }
-span.fade {
+
+.sub-titles-divider {
+    position: relative;
+    display: inline-block;
+    font-size: 50px;
+    left: 15px;
+    right: 15px;
+}
+
+.sub-titles {
+    position: relative;
+    --lineColor: #cb6bff;
+}
+
+.sub-titles:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 15px;
+    opacity: 0.7;
+    background: var(--lineColor);
+    bottom: 30px;
+    transition: all 0.2s ease-out;
+}
+
+.each-sub-titles:hover {
+    background-position: 0 11px;
+}
+
+.sub-titles:hover:before {
+    transform: translateY(10px);
+}
+
+//
+.title-letter {
+    opacity: 0;
+    transition-property: opacity, color;
+    transition-duration: 1s;
+}
+// .color-transition {
+//     transition: color ease-out 1s;
+// }
+.title-letter.fade {
     opacity: 1;
 }
 
 h1 {
-    font-size: 4em;
+    font-size: 6rem;
     font-weight: normal;
-    // background: -webkit-linear-gradient(#eee, rgb(86, 86, 86));
-    // background-clip: text;
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
 }
 h4 {
     font-weight: normal;
-    background: -webkit-linear-gradient(rgb(233, 233, 233), rgba(241, 80, 247, 0.914), rgb(233, 233, 233));
+    background: -webkit-linear-gradient(135deg, rgb(255, 255, 255), rgba(143, 142, 142, 0.996), rgb(255, 254, 254));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
