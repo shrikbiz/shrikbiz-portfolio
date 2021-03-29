@@ -1,6 +1,6 @@
 <template>
     <v-app id="app">
-        <v-responsive class="overflow-y-auto" max-height="calc(100vh - 56.8px)">
+        <v-responsive class="overflow-y-auto">
             <v-main>
                 <HomePage @handleScrollVariable="onScroll($event)" />
                 <!-- <SandBox /> -->
