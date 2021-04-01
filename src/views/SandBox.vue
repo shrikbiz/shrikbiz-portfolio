@@ -71,7 +71,6 @@ export default class SandBox extends Vue {
         this.fractionThree = 30;
 
         this.colors = `rgb(${this.red[0]}, ${this.red[1]}, ${this.red[2]}) ${this.fractionOne}%, rgb(${this.blue[0]}, ${this.blue[1]}, ${this.blue[2]}) ${this.fractionTwo}%, rgb(${this.green[0]}, ${this.green[1]}, ${this.green[2]}) ${this.fractionThree}%)`;
-        console.log(this.degree, this.colors);
     }
 
     async created() {

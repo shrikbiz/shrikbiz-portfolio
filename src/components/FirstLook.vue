@@ -15,22 +15,32 @@
                 </h1>
             </div>
             <v-row class="sub-title-container" align="center" justify="center">
-                <v-col cols="auto" style="display: flex" v-for="(iAm, index) in iAmList" :key="index">
+                <v-col
+                    cols="auto"
+                    style="display: flex; padding: 0px 20px !important"
+                    v-for="(iAm, index) in iAmList"
+                    :key="index"
+                >
                     <span class="sub-titles">
                         <p class="each-sub-titles">
                             {{ iAm }}
                         </p>
                     </span>
-                    <span class="sub-titles-divider">|</span>
+                    <span v-if="index !== iAmList.length - 1" class="sub-titles-divider">|</span>
                 </v-col>
             </v-row>
-            <p class="about-me" justify="center">
+            <!-- <p class="about-me" justify="center">
                 Hi, I am Shrikant Patel from Denver, Colorado with ~3 years of experience as FrontEnd Software Engineer.
-                Event though first framework that I learned was Angular, I generally work on Vue and React. When I am
-                not programming, I like to go for hiking, cooking, or watch few Real Madrid or Juventus games. I have
-                currently started to create content on FrontEnd Development related topics for Instagram, and soon for
+                Event though first framework that I learned was Angular, I generally work on Vue & React. When I am not
+                programming, I like to go for hiking, cooking, or watch few Real Madrid or Juventus games. I have
+                currently started to create content on FrontEnd Development related topics for Instagram, & soon for
                 YouTube.
-            </p>
+            </p> -->
+            <div align="center" justify="center">
+                <v-icon class="slide-down">
+                    mdi-chevron-triple-down
+                </v-icon>
+            </div>
         </v-col>
     </v-row>
 </template>
@@ -57,7 +67,7 @@ export default class FirstLook extends vue {
     iAmList: string[] = [
         'Web Designer',
         'Software Developer',
-        'Algorithm Enthusiastic',
+        'Algorithm Enthusiast',
         'rookie Content Creator',
         'Former Soccer Player',
         'Painter',
@@ -143,11 +153,11 @@ export default class FirstLook extends vue {
             span.style.webkitBackgroundClip = 'text';
             span.style.color = 'transparent';
         }
-        if (++this.animTime === 1000) {
-            clearInterval(this.timer);
-            this.timer = null;
-            return;
-        }
+        // if (++this.animTime === 1000) {
+        //     clearInterval(this.timer);
+        //     this.timer = null;
+        //     return;
+        // }
         if (++this.char > this.titleName.length - 1) {
             this.colorIndex = ++this.colorIndex % (this.colorList.length * 2);
             this.char = 0;
@@ -167,15 +177,17 @@ export default class FirstLook extends vue {
 }
 
 .title-area {
-    margin-top: 5rem;
+    margin-top: 20rem;
+    margin-bottom: 2rem;
     width: 100%;
-    height: 200px;
+    height: auto;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
 .sub-title-container {
     max-width: 100%;
+    // height: 100%;
 }
 
 .sub-titles {
@@ -192,12 +204,14 @@ export default class FirstLook extends vue {
     height: 15px;
     opacity: 0.7;
     background: var(--lineColor);
-    bottom: 30px;
+    //how bottom the underline will be
+    bottom: 15px;
     transition: all 0.2s ease-out;
 }
 
 .sub-titles:hover:before {
-    transform: translateY(10px);
+    //how down side the underline will slide
+    transform: translateY(15px);
 }
 
 .each-sub-titles {
@@ -212,15 +226,16 @@ export default class FirstLook extends vue {
     background-repeat: no-repeat;
     transition: all 0.2s ease-out;
     white-space: nowrap;
+    margin-bottom: 0 !important;
 }
 .each-sub-titles:hover {
-    background-position: 0 11px;
+    background-position: 0 15px;
 }
 
 .sub-titles-divider {
     position: relative;
     display: inline-block;
-    font-size: 35px;
+    font-size: 40px;
     left: 15px;
     right: 15px;
 }
@@ -238,8 +253,17 @@ export default class FirstLook extends vue {
 
 .about-me {
     text-align: center;
-    font-size: 30px;
-    margin: 5% 5%;
+    font-size: 20px;
+    margin: 3% 5%;
+}
+
+.slide-down {
+    position: absolute;
+    top: auto;
+    bottom: 1rem;
+    text-align: center;
+    font-size: 50px;
+    color: grey;
 }
 
 h1 {

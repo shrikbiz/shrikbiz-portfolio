@@ -1,27 +1,29 @@
 <template>
-    <div class="work-info" :style="{ background: radialEffect(0, 900) }">
+    <div class="work-info" :style="{ background: radialEffect(1300, 2400) }">
         <div class="work-container">
             <v-row v-scroll:#scroll-target="onScroll" justify="center" class="title-row">
                 <v-col cols="auto">
                     <TitleEffect
                         :scrollVariable="scrollVariable"
-                        :title="'Project'"
-                        :effectEnd="600"
+                        :title="'Projects'"
+                        :effectEnd="1800"
                         :difference="500"
                         :primaryColorHex="color.hex"
                     />
                 </v-col>
             </v-row>
             <v-row justify="center">
-                <v-col cols="auto" align="right" class="card-col">
+                <!-- row 1 -->
+                <v-col cols="auto" class="card-col"> </v-col>
+                <v-col cols="auto" align="left" class="card-col">
                     <Card
-                        :isDirectionLeft="true"
-                        :effectEnd="900"
+                        :isDirectionLeft="false"
+                        :effectEnd="2100"
                         :difference="350"
                         :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            jobTitle: 'FrontEnd Software Engineer',
-                            companyName: 'Lumen Technologies',
+                            companyName: 'Revent App',
+                            jobTitle: 'Side Project',
                             description: tempDescription,
                         }"
                     >
@@ -30,17 +32,16 @@
                         </template>
                     </Card>
                 </v-col>
-                <v-col cols="auto" class="card-col"> </v-col>
-                <v-col cols="auto" class="card-col"> </v-col>
-                <v-col align="left" class="card-col" cols="auto">
+                <!-- row 2 -->
+                <v-col align="right" class="card-col" cols="auto">
                     <Card
-                        :isDirectionLeft="false"
-                        :effectEnd="1200"
+                        :isDirectionLeft="true"
+                        :effectEnd="2250"
                         :difference="350"
                         :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            jobTitle: 'Software Specialist',
-                            companyName: 'eClinicalWorks',
+                            companyName: 'Organic Bar',
+                            jobTitle: 'Side Project',
                             description: tempDescription,
                         }"
                     >
@@ -49,15 +50,36 @@
                         </template>
                     </Card>
                 </v-col>
-                <v-col cols="auto" align="right" class="card-col">
+                <v-col cols="auto" class="card-col"> </v-col>
+                <!-- row 3 -->
+                <v-col cols="auto" class="card-col"></v-col>
+                <v-col cols="auto" align="left" class="card-col">
                     <Card
-                        :isDirectionLeft="true"
-                        :effectEnd="1500"
+                        :isDirectionLeft="false"
+                        :effectEnd="2600"
                         :difference="350"
                         :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            jobTitle: 'Software Developer (Intern)',
-                            companyName: 'Mazcon InfoTech',
+                            companyName: 'Mass. Audubon Society',
+                            jobTitle: 'Clark University',
+                            description: tempDescription,
+                        }"
+                    >
+                        <template v-slot:logo>
+                            <v-img contain src="@/assets/mazcon.png" class="company-logo"> </v-img>
+                        </template>
+                    </Card>
+                </v-col>
+                <!-- row 4 -->
+                <v-col cols="auto" align="right" class="card-col">
+                    <Card
+                        :isDirectionLeft="true"
+                        :effectEnd="2950"
+                        :difference="350"
+                        :scrollVariable="scrollVariable"
+                        :jobDetails="{
+                            companyName: 'Mass. Audubon Society',
+                            jobTitle: 'Clark University',
                             description: tempDescription,
                         }"
                     >
@@ -67,6 +89,25 @@
                     </Card>
                 </v-col>
                 <v-col cols="auto" class="card-col"></v-col>
+                <!-- row 5 -->
+                <v-col cols="auto" class="card-col"></v-col>
+                <v-col cols="auto" align="left" class="card-col">
+                    <Card
+                        :isDirectionLeft="false"
+                        :effectEnd="3250"
+                        :difference="350"
+                        :scrollVariable="scrollVariable"
+                        :jobDetails="{
+                            companyName: 'Hotel Booking',
+                            jobTitle: 'Gujarat Technological University',
+                            description: tempDescription,
+                        }"
+                    >
+                        <template v-slot:logo>
+                            <v-img contain src="@/assets/mazcon.png" class="company-logo"> </v-img>
+                        </template>
+                    </Card>
+                </v-col>
             </v-row>
         </div>
     </div>
@@ -99,8 +140,7 @@ export default class ProjectLook extends Vue {
     radialEffect(start: number, end: number) {
         let fraction = Fraction(start, end, this.scrollVariable);
         let hex = this.color.hex;
-        console.log(`🚀 -> ProjectLook -> radialEffect -> fraction * 100`, fraction * 100);
-        return `radial-gradient(circle at ${100 - fraction * 100}%, rgba(${hex}, 0.527) 5%, #eee 35%, #121212 35%)`;
+        return `radial-gradient(circle at ${fraction * 100 - 100}%, rgba(${hex}, 0.527) 5%, #eee 35%, #121212 35%)`;
     }
 }
 </script>
@@ -119,7 +159,7 @@ export default class ProjectLook extends Vue {
 
 .work-info {
     position: relative;
-    height: 150vh;
+    height: 200vh;
     background: #121212;
 }
 .work-container {

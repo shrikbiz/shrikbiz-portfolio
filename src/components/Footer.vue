@@ -1,46 +1,46 @@
 <template>
     <v-footer color="headerPrimary" padless>
         <v-row no-gutters justify="center">
-            <v-col class="py-4 text-right white--text headerPrimary" cols="auto">
+            <v-col class="py-4 text-right white--text" cols="auto">
                 Author:
-                <a href="mailto: shrikantpatel.js@gmail.com" style="text-decoration: none">
-                    <strong>Shrikant Patel</strong> |
-                    <span class="accent">
+                <a href="mailto: shrikbiz@gmail.com" style="text-decoration: none; color: white">
+                    <strong>Shrikant Patel</strong>
+                    <!-- <span class="accent">
                         {{ scrollVariable }}
-                    </span>
+                    </span> -->
                 </a>
             </v-col>
-            <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
+            <v-col class="py-4 pl-9 text-right white--text" cols="auto">
                 |
             </v-col>
-            <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
+            <v-col class="py-4 pl-9 text-right white--text" cols="auto">
+                <a href="https://www.linkedin.com/in/patel-shrikant/" style="text-decoration: none">
+                    <v-icon color="white">mdi-linkedin</v-icon>
+                </a>
+            </v-col>
+            <v-col class="py-4 pl-9 text-right white--text" cols="auto">
+                |
+            </v-col>
+            <v-col class="py-4 pl-9 text-right white--text" cols="auto">
+                <a href="https://github.com/shrikbiz/" style="text-decoration: none">
+                    <v-icon color="white">mdi-github</v-icon>
+                </a>
+            </v-col>
+            <v-col class="py-4 pl-9 text-right white--text" cols="auto">
+                |
+            </v-col>
+            <v-col class="py-4 pl-9 text-right white--text" cols="auto">
                 <a href="https://www.instagram.com/shrikbiz.js/" style="text-decoration: none">
-                    <v-icon color="primary">mdi-instagram</v-icon>
+                    <v-icon color="white">mdi-instagram</v-icon>
                 </a>
             </v-col>
-            <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
+            <v-col class="py-4 pl-9 text-right white--text" cols="auto">
                 |
             </v-col>
-            <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
-                <a href="https://www.linkedin.com/in/shrikant-patel-232282204/" style="text-decoration: none">
-                    <v-icon color="primary">mdi-linkedin</v-icon>
-                </a>
-            </v-col>
-            <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
-                |
-            </v-col>
-            <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
-                <a href="https://github.com/shrikbiz7" style="text-decoration: none">
-                    <v-icon color="primary">mdi-github</v-icon>
-                </a>
-            </v-col>
-            <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
-                |
-            </v-col>
-            <v-col class="py-4 pl-9 text-right white--text headerPrimary" cols="auto">
+            <v-col class="py-4 pl-9 text-right white--text" cols="auto">
                 <a href="https://shrikbiz.medium.com/" style="text-decoration: none">
                     <v-img
-                        color="primary"
+                        style="background: white"
                         alt="medium logo"
                         class="shrink mr-2"
                         contain
