@@ -258,10 +258,11 @@ export default class FirstLook extends vue {
 }
 
 .slide-down {
-    position: absolute;
-    top: auto;
-    bottom: 1rem;
-    text-align: center;
+    // position: absolute;
+    // top: auto;
+    // bottom: 50px;
+    // text-align: center;
+    top: 50px;
     font-size: 50px;
     color: grey;
 }
