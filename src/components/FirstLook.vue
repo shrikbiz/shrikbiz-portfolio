@@ -36,11 +36,11 @@
                 currently started to create content on FrontEnd Development related topics for Instagram, & soon for
                 YouTube.
             </p> -->
-            <div align="center" justify="center">
+            <!-- <div align="center" justify="center">
                 <v-icon class="slide-down">
                     mdi-chevron-triple-down
                 </v-icon>
-            </div>
+            </div> -->
         </v-col>
     </v-row>
 </template>
