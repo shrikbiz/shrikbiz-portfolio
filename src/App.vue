@@ -2,7 +2,8 @@
     <v-app id="app">
         <v-responsive class="overflow-y-auto">
             <v-main>
-                <HomePage @handleScrollVariable="onScroll($event)" />
+                <Loading v-if="!isLoading" @isDone="handleDone" />
+                <HomePage v-if="isLoading" @handleScrollVariable="onScroll($event)" />
                 <!-- <SandBox /> -->
             </v-main>
         </v-responsive>
@@ -19,6 +20,7 @@ import { getModule } from 'vuex-module-decorators';
 @Component({
     components: {
         HomePage: () => import('@/views/HomePage.vue'),
+        Loading: () => import('@/views/Loading.vue'),
         SandBox: () => import('@/views/SandBox.vue'),
         Footer: () => import('@/components/Footer.vue'),
     },
@@ -26,11 +28,16 @@ import { getModule } from 'vuex-module-decorators';
 export default class App extends Vue {
     storeModule: any;
     scrollVariable: number = 0;
+    isLoading: boolean = false;
 
     // @Module
     beforeCreate() {
         const isModuleRegistered = Object.keys(this.$store.state).includes(STORE_KEY);
         if (!isModuleRegistered) this.$store.registerModule(STORE_KEY, store);
+    }
+    handleDone() {
+        console.log('object');
+        this.isLoading = true;
     }
 
     created() {

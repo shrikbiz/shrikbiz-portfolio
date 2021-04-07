@@ -1,5 +1,6 @@
 <template>
-    <div class="work-info" :style="{ background: radialEffect(0, 900) }">
+    <!-- <div class="work-info" :style="{ background: radialEffect(0, 900) }"> -->
+    <div class="work-info">
         <div class="work-container">
             <v-row v-scroll:#scroll-target="onScroll" justify="center" class="title-row">
                 <v-col cols="auto">
@@ -96,11 +97,11 @@ export default class WorkLook extends Vue {
         this.scrollVariable = event.target.scrollTop;
     }
 
-    radialEffect(start: number, end: number) {
-        let fraction = Fraction(start, end, this.scrollVariable);
-        let hex = this.color.hex;
-        return `radial-gradient(circle at ${200 - fraction * 100}%, rgba(${hex}, 0.527) 5%, #eee 35%, #121212 35%)`;
-    }
+    // radialEffect(start: number, end: number) {
+    //     let fraction = Fraction(start, end, this.scrollVariable);
+    //     let hex = this.color.hex;
+    //     return `radial-gradient(circle at ${200 - fraction * 100}%, rgba(${hex}, 0.527) 5%, #eee 35%, #121212 35%)`;
+    // }
 }
 </script>
 
@@ -117,9 +118,10 @@ export default class WorkLook extends Vue {
 }
 
 .work-info {
+    z-index: 2;
     position: relative;
     height: 150vh;
-    background: #121212;
+    background: none;
 }
 .work-container {
     width: 100%;

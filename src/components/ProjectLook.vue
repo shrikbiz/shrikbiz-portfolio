@@ -1,5 +1,5 @@
 <template>
-    <div class="work-info" :style="{ background: radialEffect(1300, 2400) }">
+    <div class="work-info">
         <div class="work-container">
             <v-row v-scroll:#scroll-target="onScroll" justify="center" class="title-row">
                 <v-col cols="auto">
@@ -160,7 +160,8 @@ export default class ProjectLook extends Vue {
 .work-info {
     position: relative;
     height: 200vh;
-    background: #121212;
+    z-index: 2;
+    background: none;
 }
 .work-container {
     width: 100%;

@@ -9,6 +9,8 @@
     >
         <FirstLook />
 
+        <Intro />
+
         <!-- Skill Hotizontal Ticker -->
         <!-- <SkillsTicker /> -->
 
@@ -33,6 +35,7 @@ import { Fraction } from '@/helper/helperIndex';
         WorkLook: () => import('@/components/WorkLook.vue'),
         ProjectLook: () => import('@/components/ProjectLook.vue'),
         SkillsTicker: () => import('@/components/SkillsTicker.vue'),
+        Intro: () => import('@/components/Intro.vue'),
         TitleEffect: () => import('@/components/utils/TitleEffect.vue'),
         Card: () => import('@/components/utils/Card.vue'),
         InfiniteScrollBar: () => import('@/helper/InfiniteScroll.vue'),

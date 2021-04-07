@@ -1,62 +1,64 @@
 <template>
-    <InfiniteScrollBar :barStyle="{ background: '#121212', padding: '5px 0', height: '7rem' }">
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem ; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem ; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem ; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem ; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-        <img
-            style="width:5rem; margin: auto 5rem"
-            src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
-        />
-    </InfiniteScrollBar>
+    <div>
+        <InfiniteScrollBar :barStyle="{ background: '#121212', padding: '5px 0', height: '7rem' }">
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem ; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem ; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem ; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem ; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+            <img
+                style="width:5rem; margin: auto 5rem"
+                src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/home-icon.png"
+            />
+        </InfiniteScrollBar>
+    </div>
 </template>
 
 <script lang="ts">
@@ -71,8 +73,4 @@ import { Component } from 'vue-property-decorator';
 export default class SkillsTicker extends Vue {}
 </script>
 
-<style scoped lang="scss">
-* {
-    font-family: Montserrat, sans-serif;
-}
-</style>
+<style scoped lang="scss"></style>

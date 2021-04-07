@@ -1,58 +1,62 @@
 <template>
-    <v-row v-scroll:#scroll-target="onScroll" justify="center" class="masterhead">
-        <v-col cols="auto">
-            <div class="title-area" justify="center" align="center">
-                <h1
-                    :style="{
-                        fontFamily: 'Montserrat, sans-serif',
-                        fontSize: titleSize + 'px',
-                    }"
-                    class="anim-title"
-                >
-                    <span class="title-letter color-transition" v-for="(letter, index) in titleName" :key="index">
-                        {{ letter }}
-                    </span>
-                </h1>
-            </div>
-            <v-row class="sub-title-container" align="center" justify="center">
-                <v-col
-                    cols="auto"
-                    style="display: flex; padding: 0px 20px !important"
-                    v-for="(iAm, index) in iAmList"
-                    :key="index"
-                >
-                    <span class="sub-titles">
-                        <p class="each-sub-titles">
-                            {{ iAm }}
-                        </p>
-                    </span>
-                    <span v-if="index !== iAmList.length - 1" class="sub-titles-divider">|</span>
-                </v-col>
-            </v-row>
-            <!-- <p class="about-me" justify="center">
+    <div>
+        <Background />
+        <v-row style="z-index: 3" v-scroll:#scroll-target="onScroll" justify="center" class="masterhead">
+            <v-col cols="auto" width="100vw">
+                <div class="title-area" justify="center" align="center">
+                    <h1
+                        :style="{
+                            fontFamily: 'Montserrat, sans-serif',
+                            fontSize: titleSize + 'px',
+                        }"
+                        class="anim-title"
+                    >
+                        <span class="title-letter color-transition" v-for="(letter, index) in titleName" :key="index">
+                            {{ letter }}
+                        </span>
+                    </h1>
+                </div>
+                <v-row class="sub-title-container" align="center" justify="center">
+                    <v-col
+                        cols="auto"
+                        style="display: flex; padding: 0px 20px !important"
+                        v-for="(iAm, index) in iAmList"
+                        :key="index"
+                    >
+                        <span class="sub-titles">
+                            <p class="each-sub-titles">
+                                {{ iAm }}
+                            </p>
+                        </span>
+                        <span v-if="index !== iAmList.length - 1" class="sub-titles-divider">|</span>
+                    </v-col>
+                </v-row>
+                <!-- <p class="about-me" justify="center">
                 Hi, I am Shrikant Patel from Denver, Colorado with ~3 years of experience as FrontEnd Software Engineer.
                 Event though first framework that I learned was Angular, I generally work on Vue & React. When I am not
                 programming, I like to go for hiking, cooking, or watch few Real Madrid or Juventus games. I have
                 currently started to create content on FrontEnd Development related topics for Instagram, & soon for
                 YouTube.
             </p> -->
-            <!-- <div align="center" justify="center">
-                <v-icon class="slide-down">
-                    mdi-chevron-triple-down
-                </v-icon>
-            </div> -->
-        </v-col>
-    </v-row>
+            </v-col>
+            <v-col justify="center" align="center">
+                <div class="scroll"></div>
+            </v-col>
+        </v-row>
+    </div>
 </template>
 
 <script lang="ts">
 import vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import RGBClass from '@/helper/ColorChange';
-import { RGB, ColorName, ColorLists, ColorList, GetRGBList } from '@/helper/Colors';
-import { Fraction } from '@/helper/helperIndex';
+import { RGB, GetRGBList } from '@/helper/Colors';
 
-@Component
+@Component({
+    components: {
+        Background: () => import('@/components/Background.vue'),
+    },
+})
 export default class FirstLook extends vue {
     scrollVariable: number = 0;
     titleName: string = 'ShrikantPatel';
@@ -270,5 +274,76 @@ export default class FirstLook extends vue {
 h1 {
     font-size: 6rem;
     font-weight: normal;
+}
+
+//scroll down icon animation
+
+.scroll {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: relative;
+    animation: down 1.5s infinite;
+    -webkit-animation: down 1.5s infinite;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 18px;
+        width: 18px;
+        height: 18px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(-45deg);
+    }
+}
+
+@keyframes down {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translateY(15px);
+    }
+    40% {
+        transform: translate(0);
+    }
+}
+
+@-webkit-keyframes down {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translateY(15px);
+    }
+    40% {
+        transform: translate(0);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        height: 40px;
+    }
+    30% {
+        height: 70px;
+    }
+    60% {
+        height: 40px;
+    }
+}
+
+@-webkit-keyframes scroll {
+    0% {
+        height: 40px;
+    }
+    30% {
+        height: 70px;
+    }
+    60% {
+        height: 40px;
+    }
 }
 </style>
