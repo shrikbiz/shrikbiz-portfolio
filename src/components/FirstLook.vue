@@ -1,28 +1,17 @@
 <template>
     <div>
         <Background />
-        <v-row style="z-index: 3" v-scroll:#scroll-target="onScroll" justify="center" class="masterhead">
+        <v-row style="z-index: 3" justify="center" class="masterhead">
             <v-col cols="auto" width="100vw">
                 <div class="title-area" justify="center" align="center">
-                    <h1
-                        :style="{
-                            fontFamily: 'Montserrat, sans-serif',
-                            fontSize: titleSize + 'px',
-                        }"
-                        class="anim-title"
-                    >
+                    <h1 class="anim-title">
                         <span class="title-letter color-transition" v-for="(letter, index) in titleName" :key="index">
                             {{ letter }}
                         </span>
                     </h1>
                 </div>
                 <v-row class="sub-title-container" align="center" justify="center">
-                    <v-col
-                        cols="auto"
-                        style="display: flex; padding: 0px 20px !important"
-                        v-for="(iAm, index) in iAmList"
-                        :key="index"
-                    >
+                    <v-col cols="auto" class="sub-title-container-col" v-for="(iAm, index) in iAmList" :key="index">
                         <span class="sub-titles">
                             <p class="each-sub-titles">
                                 {{ iAm }}
@@ -82,16 +71,6 @@ export default class FirstLook extends vue {
         'Gym Enthusiastic',
     ];
 
-    get imgHeight() {
-        let number: number = this.scrollVariable;
-        let constant = 400;
-        constant += number;
-        return constant ? constant : 0;
-    }
-    get titleSize(): number {
-        return this.scrollVariable < 800 ? this.scrollVariable / 15 + 100 : 60;
-    }
-
     created() {
         let index = 0;
         for (let letter of this.titleName) {
@@ -105,11 +84,6 @@ export default class FirstLook extends vue {
             });
             index++;
         }
-    }
-
-    //do not make it array function
-    onScroll(event: any) {
-        this.scrollVariable = event.target.scrollTop;
     }
 
     //do not make it array function
@@ -175,13 +149,15 @@ export default class FirstLook extends vue {
 }
 
 .anim-title {
-    width: '100%';
-    overflow-x: 'hidden';
-    transition: 'all 0.1s ease-out';
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition: all 0.1s ease-out;
+    // font-family: 'Montserrat, sans-serif' !important;
 }
 
 .title-area {
-    margin-top: 20rem;
+    margin-top: 10rem;
     margin-bottom: 2rem;
     width: 100%;
     height: auto;
@@ -192,6 +168,11 @@ export default class FirstLook extends vue {
 .sub-title-container {
     max-width: 100%;
     // height: 100%;
+}
+
+.sub-title-container-col {
+    display: flex;
+    padding: 0px 20px !important;
 }
 
 .sub-titles {
@@ -249,6 +230,7 @@ export default class FirstLook extends vue {
     opacity: 0;
     transition-property: opacity, color;
     transition-duration: 1s;
+    font-size: 10rem;
 }
 
 .title-letter.fade {

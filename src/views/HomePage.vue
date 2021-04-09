@@ -12,7 +12,7 @@
         <Intro />
 
         <!-- Skill Hotizontal Ticker -->
-        <!-- <SkillsTicker /> -->
+        <SkillsTicker />
 
         <!-- Title -->
         <WorkLook />

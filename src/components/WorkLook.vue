@@ -126,7 +126,7 @@ export default class WorkLook extends Vue {
 .work-container {
     width: 100%;
     position: relative;
-    top: 0rem;
+    top: 2rem;
 }
 
 .title-row {
