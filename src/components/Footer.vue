@@ -5,9 +5,9 @@
                 Author:
                 <a href="mailto: shrikbiz@gmail.com" style="text-decoration: none; color: white">
                     <strong>Shrikant Patel</strong>
-                    <!-- <span class="accent">
+                    <span class="accent">
                         {{ scrollVariable }}
-                    </span> -->
+                    </span>
                 </a>
             </v-col>
             <v-col class="py-4 pl-9 text-right white--text" cols="auto">

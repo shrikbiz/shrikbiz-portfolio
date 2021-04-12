@@ -2,7 +2,7 @@
     <div style="position: static" justify="center" align="center">
         <v-img
             gradient="to top right, rgba(100,115,201,.1), rgba(25,32,72,.3)"
-            src="@/assets/myPhoto.jpg"
+            src="@/assets/myPhoto.png"
             max-width="300px"
             class="mb-8"
             style="border-radius: 50px;"

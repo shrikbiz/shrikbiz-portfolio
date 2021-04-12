@@ -1,13 +1,14 @@
 <template>
     <div class="work-info">
         <div class="work-container">
+            <!-- //starter: 2500-->
             <v-row v-scroll:#scroll-target="onScroll" justify="center" class="title-row">
                 <v-col cols="auto">
                     <TitleEffect
                         :scrollVariable="scrollVariable"
                         :title="'Projects'"
-                        :effectEnd="1800"
-                        :difference="500"
+                        :effectEnd="2800"
+                        :difference="600"
                         :primaryColorHex="color.hex"
                     />
                 </v-col>
@@ -18,37 +19,29 @@
                 <v-col cols="auto" align="left" class="card-col">
                     <Card
                         :isDirectionLeft="false"
-                        :effectEnd="2100"
-                        :difference="350"
+                        :effectEnd="3200"
+                        :difference="400"
                         :scrollVariable="scrollVariable"
                         :jobDetails="{
                             companyName: 'Revent App',
                             jobTitle: 'Side Project',
                             description: tempDescription,
                         }"
-                    >
-                        <template v-slot:logo>
-                            <v-img contain src="@/assets/LumenLogo.png" class="company-logo"> </v-img>
-                        </template>
-                    </Card>
+                    />
                 </v-col>
                 <!-- row 2 -->
                 <v-col align="right" class="card-col" cols="auto">
                     <Card
                         :isDirectionLeft="true"
-                        :effectEnd="2250"
-                        :difference="350"
+                        :effectEnd="3600"
+                        :difference="400"
                         :scrollVariable="scrollVariable"
                         :jobDetails="{
                             companyName: 'Organic Bar',
                             jobTitle: 'Side Project',
                             description: tempDescription,
                         }"
-                    >
-                        <template v-slot:logo>
-                            <v-img contain src="@/assets/eCW.png" class="company-logo"> </v-img>
-                        </template>
-                    </Card>
+                    />
                 </v-col>
                 <v-col cols="auto" class="card-col"> </v-col>
                 <!-- row 3 -->
@@ -56,37 +49,29 @@
                 <v-col cols="auto" align="left" class="card-col">
                     <Card
                         :isDirectionLeft="false"
-                        :effectEnd="2600"
-                        :difference="350"
+                        :effectEnd="4000"
+                        :difference="400"
                         :scrollVariable="scrollVariable"
                         :jobDetails="{
                             companyName: 'Mass. Audubon Society',
                             jobTitle: 'Clark University',
                             description: tempDescription,
                         }"
-                    >
-                        <template v-slot:logo>
-                            <v-img contain src="@/assets/mazcon.png" class="company-logo"> </v-img>
-                        </template>
-                    </Card>
+                    />
                 </v-col>
                 <!-- row 4 -->
                 <v-col cols="auto" align="right" class="card-col">
                     <Card
                         :isDirectionLeft="true"
-                        :effectEnd="2950"
-                        :difference="350"
+                        :effectEnd="4400"
+                        :difference="400"
                         :scrollVariable="scrollVariable"
                         :jobDetails="{
                             companyName: 'Mass. Audubon Society',
                             jobTitle: 'Clark University',
                             description: tempDescription,
                         }"
-                    >
-                        <template v-slot:logo>
-                            <v-img contain src="@/assets/mazcon.png" class="company-logo"> </v-img>
-                        </template>
-                    </Card>
+                    />
                 </v-col>
                 <v-col cols="auto" class="card-col"></v-col>
                 <!-- row 5 -->
@@ -94,19 +79,15 @@
                 <v-col cols="auto" align="left" class="card-col">
                     <Card
                         :isDirectionLeft="false"
-                        :effectEnd="3250"
-                        :difference="350"
+                        :effectEnd="4800"
+                        :difference="400"
                         :scrollVariable="scrollVariable"
                         :jobDetails="{
                             companyName: 'Hotel Booking',
                             jobTitle: 'Gujarat Technological University',
                             description: tempDescription,
                         }"
-                    >
-                        <template v-slot:logo>
-                            <v-img contain src="@/assets/mazcon.png" class="company-logo"> </v-img>
-                        </template>
-                    </Card>
+                    />
                 </v-col>
             </v-row>
         </div>

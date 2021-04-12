@@ -7,8 +7,8 @@
                     <TitleEffect
                         :scrollVariable="scrollVariable"
                         :title="'Work'"
-                        :effectEnd="600"
-                        :difference="500"
+                        :effectEnd="1550"
+                        :difference="600"
                         :primaryColorHex="color.hex"
                     />
                 </v-col>
@@ -17,55 +17,40 @@
                 <v-col cols="auto" align="right" class="card-col">
                     <Card
                         :isDirectionLeft="true"
-                        :effectEnd="900"
+                        :effectEnd="1900"
                         :difference="350"
-                        :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            jobTitle: 'FrontEnd Software Engineer',
-                            companyName: 'Lumen Technologies',
+                            jobTitle: 'Network Visibility Dashboard',
                             description: tempDescription,
+                            logo: `lumen`,
                         }"
-                    >
-                        <template v-slot:logo>
-                            <v-img contain src="@/assets/LumenLogo.png" class="company-logo"> </v-img>
-                        </template>
-                    </Card>
+                    />
                 </v-col>
                 <v-col cols="auto" class="card-col"> </v-col>
                 <v-col cols="auto" class="card-col"> </v-col>
                 <v-col align="left" class="card-col" cols="auto">
                     <Card
                         :isDirectionLeft="false"
-                        :effectEnd="1200"
+                        :effectEnd="2300"
                         :difference="350"
-                        :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            jobTitle: 'Software Specialist',
-                            companyName: 'eClinicalWorks',
+                            jobTitle: 'MIPS-MACRA & HRMS',
                             description: tempDescription,
+                            logo: `ecw`,
                         }"
-                    >
-                        <template v-slot:logo>
-                            <v-img contain src="@/assets/eCW.png" class="company-logo"> </v-img>
-                        </template>
-                    </Card>
+                    />
                 </v-col>
                 <v-col cols="auto" align="right" class="card-col">
                     <Card
                         :isDirectionLeft="true"
-                        :effectEnd="1500"
+                        :effectEnd="2700"
                         :difference="350"
-                        :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            jobTitle: 'Software Developer (Intern)',
-                            companyName: 'Mazcon InfoTech',
+                            jobTitle: 'Employee Attendance & Performance Tracker',
                             description: tempDescription,
+                            logo: `mazcon`,
                         }"
-                    >
-                        <template v-slot:logo>
-                            <v-img contain src="@/assets/mazcon.png" class="company-logo"> </v-img>
-                        </template>
-                    </Card>
+                    />
                 </v-col>
                 <v-col cols="auto" class="card-col"></v-col>
             </v-row>
@@ -87,7 +72,9 @@ import { RGB, ColorName, ColorLists, ColorList, GetRGBList } from '@/helper/Colo
 })
 export default class WorkLook extends Vue {
     color: ColorList = ColorLists[0];
+    starter: number = 1200;
     scrollVariable: number = 0;
+    difference: number = 350;
     tempDescription: string = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione consequuntur
                                 perspiciatis at repudiandae architecto rerum similique rem velit minima.
                                 Voluptates ipsam id, laudantium molestias numquam doloribus accusamus ad quos
@@ -95,6 +82,11 @@ export default class WorkLook extends Vue {
 
     onScroll(event: any) {
         this.scrollVariable = event.target.scrollTop;
+    }
+
+    cardMovement(serialNo: number) {
+        const difference: number = serialNo === 1 ? 1300 : 500;
+        return this.starter + serialNo * difference;
     }
 
     // radialEffect(start: number, end: number) {
@@ -108,13 +100,6 @@ export default class WorkLook extends Vue {
 <style scoped lang="scss">
 * {
     font-family: Montserrat, sans-serif;
-}
-
-.company-logo {
-    max-width: 100px;
-    position: absolute;
-    right: 10px;
-    left: auto;
 }
 
 .work-info {

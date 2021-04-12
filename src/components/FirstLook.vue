@@ -1,34 +1,38 @@
 <template>
     <div>
-        <Background />
-        <v-row style="z-index: 3" justify="center" class="masterhead">
-            <v-col cols="auto" width="100vw">
-                <div class="title-area" justify="center" align="center">
-                    <h1 class="anim-title">
-                        <span class="title-letter color-transition" v-for="(letter, index) in titleName" :key="index">
+        <Background style="z-index: 1" />
+        <v-row justify="center" class="masterhead">
+            <v-col style="z-index: 3" cols="auto" width="100vw">
+                <div style="z-index: 4" class="title-area" justify="center" align="center">
+                    <h1 class="anim-title" style="z-index: 5">
+                        <span
+                            style="z-index: 5"
+                            class="title-letter color-transition"
+                            v-for="(letter, index) in titleName"
+                            :key="index"
+                        >
                             {{ letter }}
                         </span>
                     </h1>
                 </div>
-                <v-row class="sub-title-container" align="center" justify="center">
-                    <v-col cols="auto" class="sub-title-container-col" v-for="(iAm, index) in iAmList" :key="index">
-                        <span class="sub-titles">
-                            <p class="each-sub-titles">
+                <v-row style="z-index: 4" class="sub-title-container" align="center" justify="center">
+                    <v-col
+                        cols="auto"
+                        style="z-index: 5"
+                        class="sub-title-container-col"
+                        v-for="(iAm, index) in iAmList"
+                        :key="index"
+                    >
+                        <span style="z-index: 5" class="sub-titles">
+                            <p style="z-index: 5" class="each-sub-titles">
                                 {{ iAm }}
                             </p>
                         </span>
                         <span v-if="index !== iAmList.length - 1" class="sub-titles-divider">|</span>
                     </v-col>
                 </v-row>
-                <!-- <p class="about-me" justify="center">
-                Hi, I am Shrikant Patel from Denver, Colorado with ~3 years of experience as FrontEnd Software Engineer.
-                Event though first framework that I learned was Angular, I generally work on Vue & React. When I am not
-                programming, I like to go for hiking, cooking, or watch few Real Madrid or Juventus games. I have
-                currently started to create content on FrontEnd Development related topics for Instagram, & soon for
-                YouTube.
-            </p> -->
             </v-col>
-            <v-col justify="center" align="center">
+            <v-col style="z-index: 3" justify="center" align="center">
                 <div class="scroll"></div>
             </v-col>
         </v-row>
@@ -146,6 +150,8 @@ export default class FirstLook extends vue {
 <style lang="scss" scoped>
 .masterhead {
     height: 100vh;
+    z-index: 2 !important;
+    background: rgba(0, 0, 0, 0);
 }
 
 .anim-title {
