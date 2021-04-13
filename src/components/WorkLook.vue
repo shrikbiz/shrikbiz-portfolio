@@ -7,7 +7,7 @@
                     <TitleEffect
                         :scrollVariable="scrollVariable"
                         :title="'Work'"
-                        :effectEnd="1550"
+                        :effectEnd="starter"
                         :difference="600"
                         :primaryColorHex="color.hex"
                     />
@@ -17,11 +17,11 @@
                 <v-col cols="auto" align="right" class="card-col">
                     <Card
                         :isDirectionLeft="true"
-                        :effectEnd="1900"
+                        :effectEnd="cardMovement(1)"
                         :difference="350"
                         :jobDetails="{
                             jobTitle: 'Network Visibility Dashboard',
-                            description: tempDescription,
+                            description: lumen,
                             logo: `lumen`,
                         }"
                     />
@@ -31,23 +31,23 @@
                 <v-col align="left" class="card-col" cols="auto">
                     <Card
                         :isDirectionLeft="false"
-                        :effectEnd="2300"
+                        :effectEnd="cardMovement(2)"
                         :difference="350"
                         :jobDetails="{
                             jobTitle: 'MIPS-MACRA & HRMS',
-                            description: tempDescription,
-                            logo: `ecw`,
+                            description: ecw,
+                            logo: `eCW`,
                         }"
                     />
                 </v-col>
                 <v-col cols="auto" align="right" class="card-col">
                     <Card
                         :isDirectionLeft="true"
-                        :effectEnd="2700"
+                        :effectEnd="cardMovement(3)"
                         :difference="350"
                         :jobDetails="{
                             jobTitle: 'Employee Attendance & Performance Tracker',
-                            description: tempDescription,
+                            description: mazcon,
                             logo: `mazcon`,
                         }"
                     />
@@ -63,6 +63,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { Fraction } from '@/helper/helperIndex';
 import { RGB, ColorName, ColorLists, ColorList, GetRGBList } from '@/helper/Colors';
+import { Lumen, Ecw, Mazcon } from '@/helper/Text';
 
 @Component({
     components: {
@@ -72,9 +73,12 @@ import { RGB, ColorName, ColorLists, ColorList, GetRGBList } from '@/helper/Colo
 })
 export default class WorkLook extends Vue {
     color: ColorList = ColorLists[0];
-    starter: number = 1200;
+    starter: number = 1500;
     scrollVariable: number = 0;
     difference: number = 350;
+    lumen: string = Lumen;
+    ecw: string = Ecw;
+    mazcon: string = Mazcon;
     tempDescription: string = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione consequuntur
                                 perspiciatis at repudiandae architecto rerum similique rem velit minima.
                                 Voluptates ipsam id, laudantium molestias numquam doloribus accusamus ad quos
@@ -85,7 +89,7 @@ export default class WorkLook extends Vue {
     }
 
     cardMovement(serialNo: number) {
-        const difference: number = serialNo === 1 ? 1300 : 500;
+        const difference: number = 400;
         return this.starter + serialNo * difference;
     }
 
@@ -105,7 +109,7 @@ export default class WorkLook extends Vue {
 .work-info {
     z-index: 2;
     position: relative;
-    height: 150vh;
+    height: 170vh;
     background: none;
 }
 .work-container {

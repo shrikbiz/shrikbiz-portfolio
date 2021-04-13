@@ -3,11 +3,11 @@
         <v-responsive class="overflow-y-auto">
             <v-main>
                 <!-- uncomment for production -->
-                <!-- <Loading v-if="!isLoading" @isDone="handleDone" /> -->
-                <!-- <HomePage v-if="isLoading" @handleScrollVariable="onScroll($event)" /> -->
+                <Loading v-if="!isLoading" @isDone="handleDone" />
+                <HomePage v-if="isLoading" @handleScrollVariable="onScroll($event)" />
 
                 <!-- uncomment for development -->
-                <HomePage @handleScrollVariable="onScroll($event)" />
+                <!-- <HomePage @handleScrollVariable="onScroll($event)" /> -->
                 <!-- <SandBox /> -->
             </v-main>
         </v-responsive>
@@ -40,7 +40,6 @@ export default class App extends Vue {
         if (!isModuleRegistered) this.$store.registerModule(STORE_KEY, store);
     }
     handleDone() {
-        console.log('object');
         this.isLoading = true;
     }
 

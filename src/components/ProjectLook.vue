@@ -5,9 +5,9 @@
             <v-row v-scroll:#scroll-target="onScroll" justify="center" class="title-row">
                 <v-col cols="auto">
                     <TitleEffect
-                        :scrollVariable="scrollVariable"
                         :title="'Projects'"
-                        :effectEnd="2800"
+                        :scrollVariable="scrollVariable"
+                        :effectEnd="starter"
                         :difference="600"
                         :primaryColorHex="color.hex"
                     />
@@ -19,13 +19,12 @@
                 <v-col cols="auto" align="left" class="card-col">
                     <Card
                         :isDirectionLeft="false"
-                        :effectEnd="3200"
+                        :effectEnd="cardMovement(1)"
                         :difference="400"
-                        :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            companyName: 'Revent App',
+                            companyName: 'Snakes Game using Linked List',
                             jobTitle: 'Side Project',
-                            description: tempDescription,
+                            description: snakes,
                         }"
                     />
                 </v-col>
@@ -33,13 +32,12 @@
                 <v-col align="right" class="card-col" cols="auto">
                     <Card
                         :isDirectionLeft="true"
-                        :effectEnd="3600"
+                        :effectEnd="cardMovement(2)"
                         :difference="400"
-                        :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            companyName: 'Organic Bar',
+                            companyName: 'Revent App',
                             jobTitle: 'Side Project',
-                            description: tempDescription,
+                            description: revent,
                         }"
                     />
                 </v-col>
@@ -49,13 +47,12 @@
                 <v-col cols="auto" align="left" class="card-col">
                     <Card
                         :isDirectionLeft="false"
-                        :effectEnd="4000"
+                        :effectEnd="cardMovement(3)"
                         :difference="400"
-                        :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            companyName: 'Mass. Audubon Society',
-                            jobTitle: 'Clark University',
-                            description: tempDescription,
+                            companyName: 'Organic Bar',
+                            jobTitle: 'Side Project',
+                            description: organic,
                         }"
                     />
                 </v-col>
@@ -63,13 +60,12 @@
                 <v-col cols="auto" align="right" class="card-col">
                     <Card
                         :isDirectionLeft="true"
-                        :effectEnd="4400"
+                        :effectEnd="cardMovement(4)"
                         :difference="400"
-                        :scrollVariable="scrollVariable"
                         :jobDetails="{
                             companyName: 'Mass. Audubon Society',
                             jobTitle: 'Clark University',
-                            description: tempDescription,
+                            description: capstone,
                         }"
                     />
                 </v-col>
@@ -79,16 +75,28 @@
                 <v-col cols="auto" align="left" class="card-col">
                     <Card
                         :isDirectionLeft="false"
-                        :effectEnd="4800"
+                        :effectEnd="cardMovement(5)"
                         :difference="400"
-                        :scrollVariable="scrollVariable"
                         :jobDetails="{
-                            companyName: 'Hotel Booking',
-                            jobTitle: 'Gujarat Technological University',
-                            description: tempDescription,
+                            companyName: 'Splunk + Sportify data',
+                            jobTitle: 'Clark Univeristy',
+                            description: splunk,
                         }"
                     />
                 </v-col>
+                <v-col cols="auto" align="right" class="card-col">
+                    <Card
+                        :isDirectionLeft="true"
+                        :effectEnd="cardMovement(6)"
+                        :difference="400"
+                        :jobDetails="{
+                            companyName: 'Hotel Booking',
+                            jobTitle: 'Gujarat Technological University',
+                            description: hotel,
+                        }"
+                    />
+                </v-col>
+                <v-col cols="auto" class="card-col"></v-col>
             </v-row>
         </div>
     </div>
@@ -99,6 +107,7 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { Fraction } from '@/helper/helperIndex';
 import { RGB, ColorName, ColorLists, ColorList, GetRGBList } from '@/helper/Colors';
+import { Snakes, Revent, Organic, Capstone, Splunk, Hotel } from '@/helper/Text';
 
 @Component({
     components: {
@@ -109,13 +118,21 @@ import { RGB, ColorName, ColorLists, ColorList, GetRGBList } from '@/helper/Colo
 export default class ProjectLook extends Vue {
     color: ColorList = ColorLists[1];
     scrollVariable: number = 0;
-    tempDescription: string = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione consequuntur
-                                perspiciatis at repudiandae architecto rerum similique rem velit minima.
-                                Voluptates ipsam id, laudantium molestias numquam doloribus accusamus ad quos
-                                odit!`;
+    snakes: string = Snakes;
+    revent: string = Revent;
+    organic: string = Organic;
+    capstone: string = Capstone;
+    splunk: string = Splunk;
+    hotel: string = Hotel;
+    starter: number = 3100;
 
     onScroll(event: any) {
         this.scrollVariable = event.target.scrollTop;
+    }
+
+    cardMovement(serialNo: number) {
+        const difference: number = 400;
+        return this.starter + serialNo * difference;
     }
 
     radialEffect(start: number, end: number) {
@@ -140,7 +157,7 @@ export default class ProjectLook extends Vue {
 
 .work-info {
     position: relative;
-    height: 200vh;
+    height: 370vh;
     z-index: 2;
     background: none;
 }

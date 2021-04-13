@@ -104,7 +104,6 @@
 import Vue from 'vue';
 import { Component, Emit, Prop } from 'vue-property-decorator';
 import { Characters } from '@/constants/char';
-import { Fraction } from '@/helper/helperIndex';
 
 @Component({
     components: {
