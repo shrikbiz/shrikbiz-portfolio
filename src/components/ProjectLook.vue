@@ -106,7 +106,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { Fraction } from '@/helper/helperIndex';
-import { RGB, ColorName, ColorLists, ColorList, GetRGBList } from '@/helper/Colors';
+import { ColorLists, ColorList } from '@/helper/Colors';
 import { Snakes, Revent, Organic, Capstone, Splunk, Hotel } from '@/helper/Text';
 
 @Component({
@@ -124,7 +124,7 @@ export default class ProjectLook extends Vue {
     capstone: string = Capstone;
     splunk: string = Splunk;
     hotel: string = Hotel;
-    starter: number = 3100;
+    starter: number = 2800;
 
     onScroll(event: any) {
         this.scrollVariable = event.target.scrollTop;

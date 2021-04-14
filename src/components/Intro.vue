@@ -1,5 +1,5 @@
 <template>
-    <div justify="center" align="center">
+    <div v-scroll:#scroll-target="onScroll" justify="center" align="center">
         <v-img
             gradient="to top right, rgba(100,115,201,.1), rgba(25,32,72,.3)"
             src="@/assets/myPhoto.png"
@@ -18,27 +18,17 @@
         >
             <div class="typewriter" justify="left" align="left">
                 <h1>Hi there, I'm Shrikant.</h1>
-                <p id="line-1">
-                    I am a FrontEnd Software Developer from Denver, Colorado with ~3 years of experience.
-                </p>
-                <p id="line-2">
-                    Even though I have worked with all three major-player of web development -
-                </p>
-                <p id="line-3">
-                    Angular, React, and Vue, I majorly work with React and Vue.
-                </p>
-                <p id="line-4">
-                    I love working with Javascript. Recently I an started Instagram page
-                </p>
-                <p id="line-5">
-                    to share my knowledge about Javascript with other upcoming web developers.
-                </p>
-                <p id="line-6">
-                    When I am not programming, I like to cook, bike and/or hike, gym or
-                </p>
-                <p id="line-7">
-                    play with Data Structure & Algorithms.
-                </p>
+                <!-- <IntroText /> -->
+                <div id="lines">
+                    <p id="line">
+                        I am a FrontEnd Software Developer from Denver, Colorado with ~3 years of experience. Even
+                        though I have worked with all three major players of web development - Angular, React, and Vue,
+                        I majorly work with React and Vue. I love working with Javascript. Recently I started an
+                        Instagram page to share my knowledge about Javascript with other upcoming web developers. When I
+                        am not programming, I like to cook, bike and/or hike, gym, or play with Data Structure &
+                        Algorithms.
+                    </p>
+                </div>
             </div>
         </v-lazy>
     </div>
@@ -47,10 +37,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import Baffle from '@/helper/baffle/baffle';
 
 @Component
 export default class Intro extends Vue {
     isActive: boolean = false;
+    implement = 0;
+    scrollVariable: number = 0;
     line1: string = `I am a FrontEnd Software Developer form Denver, Colorado with ~3 years of experience.`;
     line2: string = `Even though I have worked with all three major-player of web development - Angular, React, and
                         Vue,`;
@@ -64,6 +57,26 @@ export default class Intro extends Vue {
         console.log(
             `line1: ${this.line1.length}, line2: ${this.line2.length}, line3: ${this.line3.length}, line4: ${this.line4.length}, line5: ${this.line5.length}`
         );
+    }
+    onScroll(event: any) {
+        this.scrollVariable = event.target.scrollTop;
+        if (this.scrollVariable > 570) {
+            this.implement++;
+            this.animGlitch();
+        }
+    }
+
+    animGlitch() {
+        if (this.implement === 2) {
+            let text = document.querySelector('#lines');
+            let baffle = Baffle(text, {
+                characters: '░▒ ▓/░ﻨ█▓█ﻪ▒░ო▓▒▓էհรﻨĸռﻪս▒▓░',
+                speed: 100,
+            });
+            baffle.start();
+            baffle.reveal(4000);
+            console.log(baffle);
+        }
     }
 }
 </script>
@@ -90,89 +103,8 @@ export default class Intro extends Vue {
     animation: typewriter 2s steps(30) 1s 1 normal both;
 }
 
-.typewriter #line-1 {
-    color: #cbcbcb;
-    border-right: 10px solid rgba(167, 255, 15, 0.907);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 1230px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.5rem;
-    animation: typewriter 3s steps(50) 1s 1 normal both;
-    animation-delay: 3s;
-}
-.typewriter #line-2 {
-    color: #cbcbcb;
-    border-right: 10px solid rgba(167, 255, 15, 0.907);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 1080px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.5rem;
-    animation: typewriter 3s steps(50) 1s 1 normal both;
-    animation-delay: 6s;
-}
-.typewriter #line-3 {
-    color: #cbcbcb;
-    border-right: 10px solid rgba(167, 255, 15, 0.907);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 850px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.5rem;
-    animation: typewriter 3s steps(50) 1s 1 normal both;
-    animation-delay: 9s;
-}
-.typewriter #line-4 {
-    color: #cbcbcb;
-    border-right: 10px solid rgba(167, 255, 15, 0.907);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 980px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.5rem;
-    animation: typewriter 3s steps(55) 1s 1 normal both;
-    animation-delay: 12s;
-}
-.typewriter #line-5 {
-    color: #cbcbcb;
-    border-right: 10px solid rgba(167, 255, 15, 0.907);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 1050px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.5rem;
-    animation: typewriter 3s steps(55) 1s 1 normal both;
-    animation-delay: 15s;
-}
-.typewriter #line-6 {
-    color: #cbcbcb;
-    border-right: 10px solid rgba(167, 255, 15, 0.907);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 1000px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.5rem;
-    animation: typewriter 3s steps(55) 1s 1 normal both;
-    animation-delay: 18s;
-}
-.typewriter #line-7 {
-    color: #cbcbcb;
-    border-right: 10px solid rgba(167, 255, 15, 0.907);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 550px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-size: 1.5rem;
-    animation: typewriter 1.5s steps(25) 1s 1 normal both;
-    animation-delay: 21s;
+#lines {
+    max-width: 1000px;
 }
 
 @keyframes typewriter {
@@ -188,28 +120,6 @@ export default class Intro extends Vue {
     }
     100% {
         border: none;
-    }
-}
-
-i {
-    opacity: 0;
-    animation: fadeIn 2s ease-in-out;
-    animation-delay: 10s;
-    animation-fill-mode: forwards;
-    padding-top: 1rem;
-    padding-left: 20px;
-}
-
-// a {
-//     color: rgb(220, 220, 220);
-// }
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
     }
 }
 </style>

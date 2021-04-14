@@ -73,7 +73,7 @@ import { Lumen, Ecw, Mazcon } from '@/helper/Text';
 })
 export default class WorkLook extends Vue {
     color: ColorList = ColorLists[0];
-    starter: number = 1500;
+    starter: number = 1230;
     scrollVariable: number = 0;
     difference: number = 350;
     lumen: string = Lumen;
